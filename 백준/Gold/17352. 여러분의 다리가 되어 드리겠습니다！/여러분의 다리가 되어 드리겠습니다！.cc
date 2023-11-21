@@ -10,14 +10,12 @@ void FastIO(){
 }
 
 int p[MAX];
+int cnt[MAX];
 
 int FindParent(int a){
     if(p[a] == a){
         return a;
     }
-    // else{
-    //     return FindParent(p[a]);
-    // }
     return p[a] = FindParent(p[a]);
 }
 
@@ -25,7 +23,15 @@ void Union(int a, int b){
     int pa = FindParent(a);
     int pb = FindParent(b);
     if(pa == pb) { return ;}
-    p[pb] = pa;
+
+    if(cnt[pa] > cnt[pb]){
+        p[pb] = pa;
+        cnt[pa] += cnt[pb];
+    }
+    else{
+        p[pa] = pb;
+        cnt[pb] += cnt[pa]; 
+    }
 }
 
 int main() {
@@ -36,6 +42,7 @@ int main() {
 
     for(int i = 1 ; i <= n ; i++){
         p[i] = i;
+        cnt[i] = 0;
     }
 
     for(int i = 0 ; i < n - 2 ; i++){
