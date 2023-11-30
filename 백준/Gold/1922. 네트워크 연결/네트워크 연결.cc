@@ -24,7 +24,11 @@ int main() {
         dist[i] = INT_MAX;
         selected[i] = false;
         for(int j = 1 ; j <= n ; j++){
-            cost[i][j] = INT_MAX;
+            if(i == j){
+                cost[i][j] = 0;
+            }else{
+                cost[i][j] = INT_MAX;
+            }
         }
     }
 
@@ -43,17 +47,18 @@ int main() {
 
     for(int i = 1 ; i <= n - 1 ; i++){
         int min = INT_MAX, idx;
-        for(int j = 1 ; j <= n ; j++){
+        for(int j = 2 ; j <= n ; j++){
             if(selected[j]){ continue; }
-            if(min > dist[j]){
+            if(min > dist[j] && dist[j] >= 0){
                 min = dist[j];
                 idx = j;
             }
         }
         selected[idx] = true;
+        dist[idx] = -1; 
         answer += min;
 
-        for(int j = 1 ; j <= n ; j++){
+        for(int j = 2 ; j <= n ; j++){
             if(selected[j]){ continue; }
             if(dist[j] > cost[idx][j]){
                 dist[j] = cost[idx][j];
