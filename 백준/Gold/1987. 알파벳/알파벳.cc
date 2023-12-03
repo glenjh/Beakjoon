@@ -12,9 +12,7 @@ int dir_y[4] = {1, 0, -1, 0};
 char arr[21][21];
 
 void DFS(int x, int y, int cnt){
-    // set<int> s;
-    // s.insert(arr[x][y]);
-    visited[arr[x][y] - 'A'] += 1;
+    visited[arr[x][y] - 'A'] = true;
 
     for(int i = 0 ; i < 4 ; i++){
         int nx = x + dir_x[i];
