@@ -1,31 +1,33 @@
 #include <iostream>
 #include <string>
-#include <set>
 
 using namespace std;
 
 int r, c, rel = 0;
 int cnt[21][21] = {0, };
-bool visited[26];
+int visited[26];
 int dir_x[4] = {0, 1, 0, -1};
 int dir_y[4] = {1, 0, -1, 0};
 
 char arr[21][21];
 
 void DFS(int x, int y, int cnt){
-    set<int> s;
-    s.insert(arr[x][y]);
+    // set<int> s;
+    // s.insert(arr[x][y]);
+    visited[arr[x][y] - 'A'] += 1;
 
     for(int i = 0 ; i < 4 ; i++){
         int nx = x + dir_x[i];
         int ny = y + dir_y[i];
-        if (nx < 0 || ny < 0 || nx >= r || ny >= c || s.find(arr[nx][ny]) != s.end() || visited[arr[nx][ny] - 'A']){
+        if (nx < 0 || ny < 0 || nx >= r || ny >= c){
             continue;
         }
 
-        visited[arr[nx][ny] - 'A'] = true;
-        DFS(nx, ny, cnt + 1);
-        visited[arr[nx][ny] - 'A'] = false;
+        if (!visited[arr[nx][ny] - 'A']){
+            visited[arr[nx][ny] - 'A'] = true;
+            DFS(nx, ny, cnt + 1);
+            visited[arr[nx][ny] - 'A'] = false;
+        }
     }
 
     rel = max(rel, cnt);
@@ -45,7 +47,6 @@ int main(){
         }
     }
 
-    visited[arr[0][0] - 'A'] = true;
     DFS(0, 0, 1);
     cout << rel << '\n';
     return 0;
