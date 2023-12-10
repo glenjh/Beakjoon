@@ -14,7 +14,7 @@ int main() {
     FastIO();
 
     vector<int> v;
-    int n, answer = 0, sum = 0;
+    long long n, answer = 0, sum = 0;
     cin >> n;
     for(int i = n ; i >= 1 ; i--){
         int input;
