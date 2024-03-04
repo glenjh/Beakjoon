@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <unordered_map>
 #include <map>
 #define ll long long int
 
@@ -18,7 +19,7 @@ int main() {
     ll n;
     cin >> n;
 
-    map<string, ll> m;
+    unordered_map<string, ll> m;
 
     for(ll i = 0 ; i < n ; i++){
         string input;
