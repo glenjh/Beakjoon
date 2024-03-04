@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <map>
+#define ll long long int
+
+using namespace std;
+
+void FastIO(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
+int main() {
+    FastIO();
+
+    string answer = "";
+    ll n;
+    cin >> n;
+
+    map<string, ll> m;
+
+    for(ll i = 0 ; i < n ; i++){
+        string input;
+        cin >> input;
+        if(m.find(input) == m.end()){
+            m.insert({input, 1});
+        }else{
+            m[input] += 1;
+        }
+    }
+
+    for(ll i = 0 ; i < n - 1 ; i++){
+        string input;
+        cin >> input;
+
+        if(m[input] > 0){
+            m[input] -= 1;
+        }
+    }
+
+    for (auto it : m){
+        if(it.second > 0){
+            answer = it.first;
+        }
+    }
+
+    cout << answer << '\n';
+
+    return 0;
+}
