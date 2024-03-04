@@ -24,20 +24,14 @@ int main() {
     for(ll i = 0 ; i < n ; i++){
         string input;
         cin >> input;
-        if(m.find(input) == m.end()){
-            m.insert({input, 1});
-        }else{
-            m[input] += 1;
-        }
+        m[input] += 1;
     }
 
     for(ll i = 0 ; i < n - 1 ; i++){
         string input;
         cin >> input;
-
-        if(m[input] > 0){
-            m[input] -= 1;
-        }
+        m[input] -= 1;
+        
     }
 
     for (auto it : m){
