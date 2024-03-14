@@ -13,7 +13,7 @@ void FastIO(){
 int main()
 {
     string formula;
-    getline(cin, formula);
+    cin >> formula;
 
     stack<int> s;
     for (int i = 0; i < formula.length(); i++)
