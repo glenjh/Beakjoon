@@ -14,9 +14,9 @@ void FastIO(){
 int main() {
     FastIO();
 
-    stack<pair<string, string>> s;
-    deque<pair<string, string>> d;
-    int n, cnt = 0;
+    stack<int> s;
+    deque<string> d;
+    int n;
     string answer = "";
     cin >> n;
 
@@ -26,17 +26,17 @@ int main() {
 
         if(command == "1"){
             cin >> input;
-            s.push({input, "back"});
-            d.push_back({input, "back"});
+            s.push(1);
+            d.push_back(input);
         }
         else if(command == "2"){
             cin >> input;
-            s.push({input, "front"});
-            d.push_front({input, "front"});
+            s.push(-1);
+            d.push_front(input);
         }
         else if(command == "3"){
             if(!s.empty()){
-                if(s.top().second == "front"){
+                if(s.top() == -1){
                     d.pop_front();
                 }else{
                     d.pop_back();
@@ -48,7 +48,7 @@ int main() {
     }
 
     for(int i = 0 ; i < d.size() ; i++){
-        answer += d[i].first;
+        answer += d[i];
     }
 
     if(answer == ""){
