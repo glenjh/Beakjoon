@@ -15,7 +15,6 @@ int main() {
     FastIO();
 
     unordered_map<string, int> in;
-    unordered_map<string, int> out;
     vector<int> v;
     string firstCar = "";
     int n, answer = 0;
@@ -45,7 +44,6 @@ int main() {
     for(int i = 1 ; i < n - 1 ; i++){
         for(int j = i + 1 ; j < n ; j++){
             if(v[i] > v[j]){
-                // cout << v[i] << " 추월 " << v[j] << '\n';
                 answer += 1;
                 break;;
             }
