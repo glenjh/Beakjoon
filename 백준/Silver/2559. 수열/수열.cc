@@ -22,19 +22,13 @@ int main() {
     for(int i = start ; i <= end ; i++){
         sum += arr[i];
     }
-    // cout << sum << '\n';
-    // cout << '\n';
     answer = max(answer, sum);
     end += 1;
 
     if(n != k){
         while(end < n){
-            // end += 1;
             sum = sum - arr[start] + arr[end];
-            // cout << start << ' ' << end << '\n';
-            // cout << sum << '\n';
             answer = max(answer, sum);
-            // cout << "ans: " << answer << '\n';
             start += 1;
             end += 1;
         }   
