@@ -18,7 +18,7 @@ vector<string> ans;
 vector<string> sign;
 
 int n;
-string m, M;
+string m = "", M = "";
 
 void DFS(int cnt){
     if(cnt == n + 1){
