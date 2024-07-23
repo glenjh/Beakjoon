@@ -22,7 +22,7 @@ void DFS(int depth, int n){
         for(int i = 0 ; i < n - 1 ; i++){
             temp += abs(lists[i] - lists[i + 1]);
         }
-        ans.push_back(temp);
+        answer = max(answer, temp);
 
         return;
     }
@@ -43,7 +43,7 @@ void DFS(int depth, int n){
 int main() {
     FastIO();
 
-    int n, answer = 0;
+    int n;
     cin >> n;
 
     for(int i = 0 ; i < n ; i++){
@@ -55,8 +55,7 @@ int main() {
 
     DFS(0, n);
 
-    sort(ans.begin(), ans.end());
-    cout << ans[ans.size() - 1] << '\n';
+    cout << answer << '\n';
 
     return 0;
 }
