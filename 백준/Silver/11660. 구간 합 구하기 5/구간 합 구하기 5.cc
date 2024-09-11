@@ -44,11 +44,9 @@ int main() {
         }
         else{
             int ans = 0;
-            // int ans = dp[x1][n] - dp[x1][y1 - 1];
             for(int i = x1 ; i <= x2 ; i++){
                 ans += dp[i][y2] - dp[i][y1 - 1];
             }
-            // ans += dp[x2][n] - dp[x2][y1 - 1];
             cout << ans << '\n';
         }
     }
