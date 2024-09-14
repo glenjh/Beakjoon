@@ -44,7 +44,7 @@ int main() {
         dp[i] %= 1000000;
     } 
 
-    cout << dp[s.length()] % 1000000 << '\n';
+    cout << dp[s.length()] << '\n';
 
     return 0;
 }
