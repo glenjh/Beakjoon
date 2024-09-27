@@ -26,25 +26,6 @@ void reset(){
     }
 }
 
-void print(){
-    cout << "arr" << '\n';
-    for(int i = 0 ; i < n ; i++){
-        for(int j = 0 ; j < m ; j++){
-            cout << arr[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-    cout << "melt" << '\n';
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cout << melt[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-}
-
 void GetMeltAmount(int x, int y){
     int amount = 0;
 
@@ -126,7 +107,7 @@ int main(){
                 }
             }
         }
-        // cout << cnt << '\n';
+
         if(cnt == 0){
             cout << 0 << '\n';
             return 0;
@@ -138,8 +119,6 @@ int main(){
             Calc();
             reset();
         }
-        // print();
-
     }
 
     cout << ans << '\n';
