@@ -19,8 +19,6 @@ int t, n, d, c;
 ll totalCnt, totalTime;
 vector<pair<int, int>> v[10001];
 
-bool visited[10001];
-
 void Djikstra(int x){
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push({0, x});
@@ -36,9 +34,6 @@ void Djikstra(int x){
     
             if(times[nextPC] > times[curr] + nextTime){
                 times[nextPC] = times[curr] + nextTime;
-                
-                    visited[nextPC] = true;
-
                 pq.push({times[nextPC], nextPC});
             }
         }
@@ -54,7 +49,6 @@ int main() {
 
         cin >> n >> d >> c;
         for(int i = 1 ; i <= n ; i++){
-            visited[i] = false;
             times[i] = INF;
             v[i].clear();
         }
@@ -66,14 +60,11 @@ int main() {
         }
 
         times[c] = 0;
-        visited[c] = true;
         Djikstra(c);
 
         for(int i = 1 ; i <= n ; i++){
-            if(visited[i]){
-                totalCnt += 1;
-            }
             if(times[i] != INF){
+                totalCnt += 1;
                 totalTime = max(totalTime, times[i]);
             }
         }
