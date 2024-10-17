@@ -3,7 +3,6 @@
 #include <map>
 #include <vector>
 #include <algorithm>
-#include <set>
 
 using namespace std;
 
@@ -13,18 +12,18 @@ void FastIO(){
     cout.tie(NULL);
 }
 
-map<string, int> words;
+unordered_map<string, int> words;
 
-bool comp(string a, string b){
-    if(words[a] != words[b]){
-        return words[a] > words[b];
+bool comp(pair<string, int> a, pair<string, int> b){
+    if(a.second != b.second){
+        return a.second > b.second;
     }
     else{
-        if(a.length() != b.length()){
-            return a.length() > b.length();
+        if(a.first.length() != b.first.length()){
+            return a.first.length() > b.first.length();
         }
         else{
-            return a < b;
+            return a.first < b.first;
         }
     }
 }   
@@ -32,8 +31,6 @@ bool comp(string a, string b){
 int main() {
     FastIO();
 
-    set<string> s;
-    vector<string> v;
     int n, m;
     cin >> n >> m;
     
@@ -43,18 +40,15 @@ int main() {
 
         if(input.length() >= m){
             words[input] += 1;
-            s.insert(input);
         }
     }
 
-    for(auto it : s){
-        v.push_back(it);
-    }
+    vector<pair<string, int>> v(words.begin(), words.end());
 
     sort(v.begin(), v.end(), comp);
 
     for(auto it : v){
-        cout << it << '\n';
+        cout << it.first << '\n';
     }
 
     return 0;
