@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> people, int limit) {
+    int answer = 0;
+    
+    sort(people.begin(), people.end());
+    
+    int l = 0, r = people.size() - 1;
+    while(l <= r){
+        if(people[l] + people[r] <= limit){
+            answer += 1;
+            l++;
+            r--;
+        }else{
+            r--;
+            answer+=1;
+        }
+    }
+    
+    return answer;
+}
